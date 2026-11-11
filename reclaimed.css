@@ -1,0 +1,7 @@
+.center { text-align: center; padding-top: 72px; }
+.mascot { display: flex; justify-content: center; margin-bottom: 8px; }
+.big { font-size: 34px; font-weight: 750; color: var(--sage); font-variant-numeric: tabular-nums; letter-spacing: -.02em; margin-top: 10px; }
+.estimate { color: var(--muted); font-size: 13px; }
+.today { margin-top: 18px; color: var(--text); font-variant-numeric: tabular-nums; }
+.center .actions { display: flex; gap: 12px; justify-content: center; margin-top: 26px; }
+.secondary { font: inherit; font-weight: 600; cursor: pointer; padding: 9px 16px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--text); }

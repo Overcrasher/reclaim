@@ -1,0 +1,29 @@
+== Group 6: active-time heartbeats
+  PASS heartbeat start registered (storage.session)  | {'8080240': {'at': 1794414210192, 'key': 'tiktok.com'}}
+  PASS page visible + focused
+  PASS ~30 s credited after 33 s visible+focused (beats at 15 s and 30 s)  | 29.869999999999997
+  PASS per-site seconds recorded  | {'tiktok.com': 29.869999999999997}
+   hasFocus with focus emulation off: True
+  PASS unfocused: hasFocus stays true in headless (not testable here); covered by code path + jsc credit tests
+   visibilityState after bringToFront(other): visible
+  PASS hidden tab: headless keeps tabs visible (not testable here); visibility is part of the active() check  | visible
+  PASS 5 rapid forged beats credit <= wall time  | 0.008000000000002672
+  PASS paused: no overlay, activity still tracked
+   (57s)
+== Group 7: SPA navigation (youtube-like)
+  PASS youtube home: no overlay (path-scoped rule)
+  PASS SPA to /watch: no overlay
+  PASS SPA pushState into /shorts shows overlay (<=3 s)
+  PASS intro overlay
+  PASS media paused by the SPA overlay
+  PASS SPA back out of /shorts removes overlay and resumes media
+  PASS active session: later SPA moves into /shorts don't interrupt
+  PASS session key is youtube.com/shorts  | {'youtube.com/shorts': {'startedAt': 1794414271848, 'until': 1794414871848}}
+  PASS direct load of /shorts/ID shows overlay immediately
+   (13s)
+== error-level logs in phase 'main': 0
+
+================ RESULTS ================
+ 6  PASS active-time heartbeats                           (8/8)
+ 7  PASS SPA navigation (youtube-like)                    (9/9)
+TOTAL: 17 passed, 0 failed, 73 s

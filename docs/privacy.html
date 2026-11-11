@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Reclaim – Privacy</title><style>
+:root{color-scheme:light dark;--bg:#F7F4EC;--surface:#FFFDF8;--line:#E3DDCC;--fg:#2F3A33;--muted:#5A675E;--accent:#4F7C5A;--accent-soft:#E2EEDF;--second:#B5603A;--second-soft:#F8E6DB;--btn-text:#fff;--shadow:0 1px 2px rgba(60,50,30,.06),0 8px 30px rgba(60,50,30,.09)}
+@media(prefers-color-scheme:dark){:root{--bg:#1A211C;--surface:#222B25;--line:#34423A;--fg:#EEF2EA;--muted:#A9B6AC;--accent:#7FB685;--accent-soft:#2A3B2F;--second:#E89A74;--second-soft:#3A2B24;--btn-text:#14201A;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 30px rgba(0,0,0,.3)}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-rounded,"SF Pro Rounded",-apple-system,"Segoe UI Variable","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mark{filter:drop-shadow(0 3px 6px rgba(79,124,90,.3))}
+main{max-width:640px;margin:0 auto;padding:40px 16px 56px}
+.head{display:flex;align-items:center;gap:14px;margin-bottom:20px}h1{font-size:26px;margin:0;letter-spacing:-.01em;line-height:1.2}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:var(--shadow)}
+.lead{font-weight:700;color:var(--accent);margin-top:0;font-size:18px}
+code{background:var(--accent-soft);padding:1px 6px;border-radius:6px;font-size:.92em}
+li{margin:8px 0}ul{padding-left:20px}p{margin:10px 0}
+</style></head><body>
+<main>
+<div class="head"><svg class="mark" viewBox="0 0 32 32" width="44" height="44" aria-hidden="true"><defs><linearGradient id="mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60946C"/><stop offset="1" stop-color="#3C6246"/></linearGradient></defs><rect width="32" height="32" rx="7" fill="url(#mk)"/><rect x="7.6" y="25" width="16.8" height="2.9" rx="1.4" fill="#D9825B"/><path d="M16 25.5C14.6 20 14.6 16 16 12.6" fill="none" stroke="#F7F4EC" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="10.6" cy="14.4" rx="6" ry="3.4" transform="rotate(-30 10.6 14.4)" fill="#F7F4EC"/><ellipse cx="21.4" cy="11.8" rx="6.4" ry="3.5" transform="rotate(30 21.4 11.8)" fill="#A9DEB2"/></svg><h1>Privacy Policy – Reclaim</h1></div>
+<div class="card">
+<p class="lead">No data leaves your device.</p>
+<p>Reclaim stores everything (your settings, your list of sites, daily time totals for the last 60 days, short-lived intentions and donation state) in your browser&#x27;s local extension storage (<code>chrome.storage.local</code>).</p>
+<ul>
+<li>No analytics, no tracking, no ads, no accounts.</li>
+<li>No server is contacted by the extension. It makes no network requests of its own.</li>
+<li>On the sites in your list, Reclaim reads only the page address (host and path), to decide whether to show the pause screen, and it counts active time: a signal every 15 seconds while the tab is visible and focused. It does not read page text. It pauses and mutes media on those pages while the pause screen is up.</li>
+<li>Intentions: if you type what you are there for, the text is saved with the time and the site, only on your device. Intentions are deleted automatically after 7 days (a daily clean-up and a check at browser startup).</li>
+<li>Daily totals (kept for the last 60 days): time spent per day, estimated time reclaimed, and how many times you chose &quot;Go in&quot; or &quot;Leave&quot;. &quot;Time reclaimed&quot; is an estimate calculated locally from an average session length you can change; it is not a measurement.</li>
+<li>Permissions: <code>storage</code> (settings and totals), <code>tabs</code> (to know which tab is on a listed site and focused, so only active time is counted, and to open the &quot;reclaimed&quot; page when you leave), <code>alarms</code> (session timers and the daily clean-up) and <code>scripting</code> (to register the pause screen for sites you add yourself).</li>
+<li>Site access: the built-in sites are listed in the extension&#x27;s manifest and granted at install. A site you add is requested through Chrome&#x27;s own permission prompt when you click &quot;Add&quot; in Options; removing the site removes the permission.</li>
+<li>Donation links open in a normal browser tab, at your request. Payments are handled entirely by Stripe on their own page; the extension never sees payment details.</li>
+<li>The optional thank-you page only lets the extension mark you as a supporter locally (a flag stored on your device). It is hosted on GitHub Pages, so visiting it contacts GitHub (their privacy policy applies). The extension itself still sends nothing.</li>
+</ul>
+<p>You can erase all data at any time by removing the extension.</p>
+<p>Questions: open an issue at <a href="https://github.com/Overcrasher/reclaim/issues">https://github.com/Overcrasher/reclaim/issues</a>.</p>
+<p>Publisher: Quantumbyte Labs.</p>
+</div>
+</main>
+</body></html>

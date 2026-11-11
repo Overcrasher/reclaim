@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reclaim settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header class="top">
+      <img class="mark" src="icons/icon48.png" width="32" height="32" alt="">
+      <h1>Reclaim</h1>
+      <span id="saved" class="saved" role="status" aria-live="polite">Saved</span>
+    </header>
+
+    <section class="card">
+      <h2>Sites</h2>
+      <ul id="sites" class="sites"></ul>
+      <div class="field">
+        <label for="newSite">Add a site</label>
+        <div class="inline">
+          <input id="newSite" type="text" placeholder="example.com or example.com/section" autocomplete="off" spellcheck="false">
+          <button id="addSite" type="button" class="secondary">Add site</button>
+        </div>
+        <p id="siteErr" class="err" role="alert"></p>
+        <p class="hint">Chrome asks for your permission before Reclaim can run on a site you add. Removing a site removes that permission.</p>
+      </div>
+      <button id="restore" type="button" class="secondary">Restore default sites</button>
+    </section>
+
+    <section class="card">
+      <h2>Timing</h2>
+      <div class="field">
+        <label for="countdownSec">Calm countdown (seconds, 3 to 30)</label>
+        <input id="countdownSec" class="narrow" type="number" min="3" max="30" step="1">
+        <p id="countdownErr" class="err"></p>
+      </div>
+      <div class="field">
+        <label for="sessionMin">Session length</label>
+        <select id="sessionMin"></select>
+      </div>
+      <div class="field">
+        <label for="stayMin">"Stay more" adds</label>
+        <select id="stayMin"></select>
+      </div>
+      <div class="field">
+        <label for="avgSessionMin">Average session length (minutes, 5 to 120)</label>
+        <input id="avgSessionMin" class="narrow" type="number" min="5" max="120" step="1">
+        <p id="avgErr" class="err"></p>
+        <p class="hint">Each time you leave, this many minutes are added to "time reclaimed". It is an estimate, not a measurement.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Privacy and data</h2>
+      <p class="hint">Everything stays on this device. No accounts, no analytics, no servers. Intentions you type are deleted after 7 days.</p>
+      <div class="danger-row">
+        <span id="intentCount" class="hint"></span>
+        <button id="clearIntent" type="button" class="secondary danger">Delete stored intentions</button>
+      </div>
+      <div class="danger-row">
+        <button id="resetStats" type="button" class="secondary danger">Reset all statistics</button>
+        <span id="resetNote" class="hint" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section class="card quiet">
+      <h2>Support this project</h2>
+      <p id="thanks" class="thanks" hidden>Thank you for supporting Reclaim ❤</p>
+      <p class="hint">Built by one developer, no ads, no tracking. If it helped, a coffee keeps it going.</p>
+      <div id="donate" class="donate-row"></div>
+      <p id="donate-note" class="hint"></p>
+      <p class="hint more"><a id="rate-link" href="#">Enjoying Reclaim? Rate it in the Chrome Web Store</a></p>
+      <p class="hint more">More from the same developer:</p>
+      <ul id="siblings" class="siblings"></ul>
+    </section>
+  </main>
+
+  <script src="lib/sites.js"></script>
+  <script src="lib/validate.js"></script>
+  <script src="lib/sessions.js"></script>
+  <script src="lib/donation.js"></script>
+  <script src="lib/growth.js"></script>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

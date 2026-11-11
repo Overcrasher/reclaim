@@ -1,0 +1,13 @@
+== Group 9: intention purge + forged intention
+  PASS purge alarm is scheduled daily
+  PASS daily 'purge' alarm deletes intentions older than 7 days (simulated by back-dated records)  | ['edge6', 'new']
+  PASS purge also runs when the worker starts (startup / wake-up path)  | []
+  PASS forged oversize intention stored cut to 140 chars, bidi stripped  | ({'ok': True, 'until': 1794416160314, 'state': 'active'}, [140])
+  PASS options shows count of stored intentions
+  PASS Delete stored intentions (two-click) empties them
+   (18s)
+== error-level logs in phase 'main': 0
+
+================ RESULTS ================
+ 9  PASS intention purge + forged intention               (6/6)
+TOTAL: 6 passed, 0 failed, 21 s

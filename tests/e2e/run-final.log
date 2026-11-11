@@ -1,0 +1,245 @@
+== Group 1: load/manifest/i18n/welcome
+  PASS extension loaded (id bkdhpkgiendmidpefcmbpkbcbakkefkc)
+  PASS service worker target exists
+  PASS permissions = storage,tabs,alarms,scripting  | ['storage', 'tabs', 'alarms', 'scripting']
+  PASS host_permissions = the 7 default sites only  | ['https://*.youtube.com/*', 'https://*.tiktok.com/*', 'https://*.reddit.com/*', 'https://*.x.com/*', 'https://*.twitter.com/*', 'https://*.instagram.com/*', 'https://*.facebook.com/*']
+  PASS optional_host_permissions = https://*/*
+  PASS manifest name resolves to localized en name  | Reclaim – Stop Doomscrolling & Limit Social Media
+  PASS short_name/default_locale/version
+  PASS description resolved (no __MSG_)  | A calm pause before time-wasting sites. Set an intention, take a few minutes, and see the time you reclaimed.
+  PASS i18n getMessage works in SW
+  PASS action title is bare name
+  PASS content script document_start, top frame only
+  PASS popup renders + i18n works in extension page
+  PASS options renders (7 default sites listed)
+  PASS no SW/popup/options errors on load  | []
+  PASS welcome page opened exactly once on fresh install  | ['chrome-extension://bkdhpkgiendmidpefcmbpkbcbakkefkc/welcome.html']
+  PASS welcome: title, 3 steps, privacy note, settings button, pin hint  | ('Welcome to Reclaim', ['1Open one of your usual sites. Reclaim asks what you are there for.', '2Take the few seconds, then choose: go in for a timed session, or leave.', '3Watch your plant grow in the popup.'])
+  PASS welcome: Open settings opens the options page
+   (9s)
+== Group 2: overlay+countdown+Go in
+  PASS overlay host present right after load (before page usable)  | {'w': 1100, 'h': 800, 'top': True, 'topAny': True, 'z': '2147483647', 'pos': 'fixed', 'parentIsHtml': True, 'closed': True}
+  PASS host: fixed, full viewport, top-most, child of <html>, max z-index  | {'w': 1100, 'h': 800, 'top': True, 'topAny': True, 'z': '2147483647', 'pos': 'fixed', 'parentIsHtml': True, 'closed': True}
+  PASS shadow root is closed (page cannot reach it)
+  PASS heading 'What are you here for?' + input  | {'buttons': [], 'h1': 'What are you here for?', 'has_input': True, 'num': '3'}
+  PASS countdown visible (3 -> 2)  | 3
+  PASS no Go in / Leave before countdown ends  | []
+  PASS page underneath not clickable
+  PASS keys do not reach the page while overlay is up
+  PASS media paused and muted while overlay is up  | {'paused': True, 'muted': True}
+  PASS media stays paused on re-check
+  PASS after countdown: Go in (10 min) + Leave  | {'buttons': ['Go in (10 min)', 'Leave'], 'h1': 'What are you here for?', 'has_input': True, 'num': '0'}
+  PASS Go in removes the overlay
+  PASS page clickable again
+  PASS media resumed + unmuted after Go in  | {'paused': False, 'muted': False}
+  PASS session stored ~10 min ahead  | {'tiktok.com': {'startedAt': 1794416216976, 'until': 1794416816976}}
+  PASS intention stored with site + timestamp  | [{'at': 1794416216976, 'site': 'tiktok.com', 'text': 'reply to one message'}]
+  PASS goIns counted (day + totals)  | {'goIns': 1, 'leaves': 0, 'reclaimedMin': 0, 'sites': {}, 'spentSec': 0}
+  PASS no overlay re-appears during the session
+  PASS no extension errors in this group  | []
+   (8s)
+== Group 3: session reuse across tabs
+  PASS 2nd tab same site: no overlay during session  | None
+  PASS 2nd tab usable, media not paused
+  PASS navigation within the site not interrupted
+  PASS other site (reddit) still shows overlay
+  PASS twitter.com is its own rule with its own overlay
+  PASS only one session stored (tiktok.com)  | {'tiktok.com': {'startedAt': 1794416223668, 'until': 1794416823668}}
+  PASS goIns counted once  | {'goIns': 1, 'leaves': 0, 'reclaimedMin': 0, 'sites': {'tiktok.com': 6.2379999999999995}, 'spentSec': 6.2379999999999995}
+   (14s)
+== Group 4: expiry overlay + Stay
+  PASS active session at load: no overlay
+  PASS soft overlay 'Your 10 minutes are up.' after expiry
+  PASS expired overlay: Stay 5 more + Leave  | ['Stay 5 more', 'Leave']
+  PASS expired overlay blocks the page
+  PASS Stay 5 more: overlay gone, session ~5 min from now  | 298390
+  PASS Stay does not count a leave
+  PASS SW alarm (exp:) triggers a re-check -> expired overlay
+  PASS expired > 30 min ago -> fresh intro overlay  | {'buttons': [], 'h1': 'What are you here for?', 'has_input': True, 'num': '2'}
+   (12s)
+== Group 5: Leave -> reclaimed + counters
+  PASS Leave navigates the tab to extension reclaimed.html
+  PASS reclaimed += average (20 min), leaves=1 (day + totals)  | ({'goIns': 0, 'leaves': 1, 'reclaimedMin': 20, 'sites': {}, 'spentSec': 0}, {'goIns': 0, 'leaves': 1, 'reclaimedMin': 20, 'spentSec': 0})
+  PASS no session left behind
+  PASS reclaimed page is a chrome-extension:// page
+  PASS reclaimed page text: Nice., ≈ 20 min reclaimed, (estimate), today's total  | Nice.
+
+≈ 20 min reclaimed
+
+(estimate)
+
+Today so far: ≈ 20m reclaimed (estimate)
+
+Share
+Close tab
+  PASS reclaimed page has the mascot
+  PASS Share text ends with SHARE_URL; button says Copied!  | ['I reclaimed 20m from doomscrolling this week. #Reclaim https://chromewebstore.google.com/detail/bkdhpkgiendmidpefcmbpkbcbakkefkc?utm_source=share']
+  PASS Close tab closes the page
+  PASS Leave from the expired overlay counts (leaves=2, 40 min) and ends the session  | {'goIns': 0, 'leaves': 2, 'reclaimedMin': 40, 'sites': {}, 'spentSec': 0}
+   (12s)
+== Group 6: active-time heartbeats
+  PASS heartbeat start registered (storage.session)  | {'1006086761': {'at': 1794416262249, 'key': 'tiktok.com'}}
+  PASS page visible + focused
+  PASS ~30 s credited after 33 s visible+focused (beats at 15 s and 30 s)  | 26.951
+  PASS per-site seconds recorded  | {'tiktok.com': 26.951}
+   hasFocus with focus emulation off: True
+  PASS unfocused: hasFocus stays true in headless (not testable here); covered by code path + jsc credit tests
+   visibilityState after bringToFront(other): visible
+  PASS hidden tab: headless keeps tabs visible (not testable here); visibility is part of the active() check  | visible
+  PASS 5 rapid forged beats credit <= wall time  | 0.006000000000000227
+  PASS paused: no overlay, activity still tracked
+   (41s)
+== Group 7: SPA navigation (youtube-like)
+  PASS youtube home: no overlay (path-scoped rule)
+  PASS SPA to /watch: no overlay
+  PASS SPA pushState into /shorts shows overlay (<=3 s)
+  PASS intro overlay
+  PASS media paused by the SPA overlay
+  PASS SPA back out of /shorts removes overlay and resumes media
+  PASS active session: later SPA moves into /shorts don't interrupt
+  PASS session key is youtube.com/shorts  | {'youtube.com/shorts': {'startedAt': 1794416308161, 'until': 1794416908161}}
+  PASS direct load of /shorts/ID shows overlay immediately
+   (13s)
+== Group 9: intention purge + forged intention
+  PASS purge alarm is scheduled daily
+  PASS daily 'purge' alarm deletes intentions older than 7 days (simulated by back-dated records)  | ['edge6', 'new']
+  PASS purge also runs when the worker starts (startup / wake-up path)  | []
+  PASS forged oversize intention stored cut to 140 chars, bidi stripped  | ({'ok': True, 'until': 1794416926446, 'state': 'active'}, [140])
+  PASS options shows count of stored intentions
+  PASS Delete stored intentions (two-click) empties them
+   (18s)
+== Group 10: popup today/week/mascot/summary/pause/share
+  PASS today: reclaimed ≈ 1h 35m (estimate) and spent 20m  | ≈ 1h 35m
+  PASS chart: 14 bars + 7 labels, accessible name lists days
+  PASS week totals line (estimate labelled)  | 1h spent · ≈ 3h 20m reclaimed (estimate)
+  PASS Sunday weekly summary card with comparison phrase  | You reclaimed 3h 20m this week, about one movie's worth.
+  PASS mascot reflects the week (3h20 reclaimed vs 1h spent => growing)
+  PASS Monday: summary for the week just ended ('last week')  | You reclaimed 3h 20m last week, about one movie's worth.
+  PASS Thursday: no weekly summary
+  PASS mascot state 'sprout'  | Reclaim plant, sprout
+  PASS mascot state 'droopy'  | Reclaim plant, droopy
+  PASS mascot state 'wilted'  | Reclaim plant, wilted
+  PASS mascot state 'growing'  | Reclaim plant, growing
+  PASS mascot state 'blooming'  | Reclaim plant, blooming
+  PASS Share hidden with nothing reclaimed
+  PASS Pause for 1 hour sets pausedUntil ~1 h  | 3599194
+  PASS popup shows Resume + paused note
+  PASS paused: no overlay on a tracked site
+  PASS Resume clears pausedUntil
+  PASS resumed: overlay is back
+  PASS popup Share text: 3h 20m ... #Reclaim SHARE_URL  | ['I reclaimed 3h 20m from doomscrolling this week. #Reclaim https://chromewebstore.google.com/detail/bkdhpkgiendmidpefcmbpkbcbakkefkc?utm_source=share']
+   (41s)
+== Group 12: options
+  PASS default sites listed (youtube.com/shorts path-scoped)  | ['youtube.com/shorts', 'tiktok.com', 'reddit.com', 'x.com', 'twitter.com', 'instagram.com', 'facebook.com']
+  PASS countdown 2 rejected (message, not saved)
+  PASS countdown 12 saved
+  PASS average 200 rejected
+  PASS average 25 saved
+  PASS session length 20 / stay 10 saved  | {'avgSessionMin': 25, 'countdownSec': 12, 'sessionMin': 20, 'stayMin': 10}
+  PASS session options 5/10/15/20/30 and stay 5/10/15
+  PASS settings take effect in the overlay: 'Go in (20 min)' after a 12 s countdown
+  PASS Remove works (youtube.com/shorts removed)
+  PASS Restore default sites re-adds it
+  PASS Reset all statistics (two-click)
+  PASS support section: rate link + 2 siblings
+  PASS links open the store listing, Wait 24h and Meeting Meter  | ['https://chromewebstore.google.com/detail/bkdhpkgiendmidpefcmbpkbcbakkefkc', 'https://chromewebstore.google.com/detail/wait-24h/pkgdjohoemjkejcbfbkfobbbjcpdabme', 'https://chromewebstore.google.com/detail/meeting-meter/ffkniocclnaojfdcoofnjkfnihnpgnlb', 'https://consent.google.com/m?continue=https:
+   (25s)
+== Group 13: security
+  PASS content-script world found
+  PASS content script cannot READ chrome.storage.local  | ERR:Access to storage is not allowed from this context.
+  PASS content script cannot WRITE chrome.storage.local  | ERR:Access to storage is not allowed from this context.
+  PASS content script cannot read chrome.storage.session  | ERR:Access to storage is not allowed from this context.
+  PASS forged supporter message from a non-thanks page rejected  | {'ok': False}
+  PASS goIn on an untracked path rejected; site/url fields in the message are ignored  | {'ok': False}
+  PASS untracked path: {"type": "leave"} rejected  | {'ok': False}
+  PASS untracked path: {"type": "extend"} rejected  | {'ok': False}
+  PASS untracked path: {"type": "hb", "kind": "beat"} rejected  | {'ok': False}
+  PASS untracked path: {"type": "nope"} rejected  | {'ok': False}
+  PASS untracked path: {"type": 5} rejected  | {'ok': False}
+  PASS untracked path: {"type": "goIn", "intention": "x"} rejected  | {'ok': False}
+  PASS nothing counted by the forged messages
+  PASS check on untracked path: track=false  | {'ok': True, 'url': 'https://www.youtube.com/', 'track': False, 'count': False}
+  PASS page (main world) has no extension messaging  | None
+  PASS extend without an expired session rejected  | {'ok': False}
+  PASS heartbeat with an unknown kind rejected  | {'ok': False}
+  PASS goIn with non-string intention accepted but stores no text  | {'ok': True, 'until': 1794416998584, 'state': 'active'}
+  PASS extension-page messages are not handled by the SW (FAIL)  | {'ok': False}
+  PASS extension pages CAN read storage
+  PASS thanks page with a bad session id rejected  | {'ok': False}
+  PASS thanks page cannot start sessions  | {'ok': False}
+  PASS no unexpected extension errors  | []
+   (9s)
+== Group 14: no links: milestone not consumed
+  PASS no links configured: no banner at 10 h
+  PASS milestone not consumed  | None
+  PASS options: 'Donation links not configured yet' and no buttons
+   (6s)
+== error-level logs in phase 'main': 0
+== Group 8: user-added site (dynamic registration)
+  PASS invalid input rejected with a message
+  PASS site stored as {host:fixture-custom.test, pathPrefix:/news}  | [{'host': 'youtube.com', 'pathPrefix': '/shorts'}, {'host': 'tiktok.com'}, {'host': 'reddit.com'}, {'host': 'x.com'}, {'host': 'twitter.com'}, {'host': 'instagram.com'}, {'host': 'facebook.com'}, {'host': 'fixture-custom.test', 'pathPrefix': '/news'}]
+  PASS dynamic content script registered (document_start, persistAcrossSessions)  | [{'id': 'site-fixture-custom-test-news', 'matches': ['https://*.fixture-custom.test/*', 'https://fixture-custom.test/*'], 'runAt': 'document_start', 'persist': True, 'js': ['lib/mascot.js', 'content.js']}]
+  PASS options list shows the site tagged 'added by you'
+  PASS duplicate rejected
+  PASS overlay appears on the user-added site (dynamic script)
+  PASS path outside the prefix: no overlay
+  PASS remove: rule deleted and dynamic script unregistered
+  PASS after removal: no overlay
+  PASS removing a default site (reddit.com) works
+  PASS removed default site: no overlay
+  PASS Restore default sites brings it back
+   (20s)
+== error-level logs in phase 'custom': 0
+== Group 11: donation banner, rating, share, supporter
+  PASS banner at 5 h reclaimed  | {'hidden': False, 'text': "You've reclaimed about 5 hours with Reclaim. Built by one developer, no ads, no tracking. If this helped, a coffee keeps it going — less than the cost of one hour of your time.", 'buttons': [['€3', 'donate'], ['€5', 'donate emphasized'], ['€10', 'donate'], ['Pick your own 
+  PASS banner copy has the user's real hours + 'one hour of your time'  | You've reclaimed about 5 hours with Reclaim. Built by one developer, no ads, no tracking. If this helped, a coffee keeps it going — less than the cost of one hour of your time.
+  PASS buttons €3 €5 €10 + Pick your own amount  | [['€3', 'donate'], ['€5', 'donate emphasized'], ['€10', 'donate'], ['Pick your own amount', 'donate custom']]
+  PASS only €5 emphasized; custom has class 'donate custom'
+  PASS no hint before clicking custom
+  PASS asked=[5], lastAskAt set  | {'asked': [5], 'dontAskAgain': False, 'lastAskAt': 1794416437962}
+  PASS 4 clicks open donate.stripe.com/test_a..d  | ['https://donate.stripe.com/test_a', 'https://donate.stripe.com/test_b', 'https://donate.stripe.com/test_c', 'https://donate.stripe.com/test_d', 'https://donate.stripe.com/test_b', 'https://donate.stripe.com/test_d', 'https://donate.stripe.com/test_a', 'https://donate.stripe.com/test_c']
+  PASS custom shows 'On the next page, choose the quantity (€1 each).'
+  PASS reopen: same milestone not asked again
+  PASS rating card not shown yet (1 leave)
+  PASS 20 h reached but < 30 days since last ask: no banner
+  PASS rating card appears after the 3rd Leave (banner not shown)
+  PASS rating stored {shown:true,at}
+  PASS Rate it opens the reviews URL  | ['https://chromewebstore.google.com/detail/hnmbgbahnihdjooaghhdbimpioicdikp/reviews', 'https://consent.google.com/m?continue=https://chromewebstore.google.com/detail/hnmbgbahnihdjooaghhdbimpioicdikp/reviews&gl=RO&m=0&pc=cws&cm=2&hl=en-US&src=1', 'https://consent.google.com/m?continue=https://chromew
+  PASS rating card never shown a second time
+  PASS after 30+ days: banner for 20 h milestone  | You've reclaimed about 20 hours with Reclaim. Built by one developer, no ads, no tracking. If this helped, a coffee keeps it going — less than the cost of one hour of your time.
+  PASS Don't ask again persists
+  PASS banner and rating never in the same render (banner wins)
+  PASS thanks page, bogus id -> supporter=False
+  PASS thanks page, cs_test_123 -> supporter=False
+  PASS thanks page, cs_live_ + 5 chars -> supporter=False
+  PASS thanks page, valid cs_test_ + 24 alnum -> supporter=True
+  PASS session_id on another page is ignored
+  PASS supporter: badge shown, no banner, no ask
+  PASS options: donate buttons + thanks line for supporter
+  PASS options: custom opens test_d + quantity hint
+   (55s)
+== error-level logs in phase 'links': 0
+== Group 15: evil links
+  PASS evil links: banner shown with 4 buttons
+  PASS evil / lookalike / http links open NO tab  | []
+  PASS refusal warning logged
+   (6s)
+== error-level logs in phase 'evil': 0
+
+================ RESULTS ================
+ 1  PASS load/manifest/i18n/welcome                       (17/17)
+ 2  PASS overlay+countdown+Go in                          (19/19)
+ 3  PASS session reuse across tabs                        (7/7)
+ 4  PASS expiry overlay + Stay                            (8/8)
+ 5  PASS Leave -> reclaimed + counters                    (9/9)
+ 6  PASS active-time heartbeats                           (8/8)
+ 7  PASS SPA navigation (youtube-like)                    (9/9)
+ 8  PASS user-added site (dynamic registration)           (12/12)
+ 9  PASS intention purge + forged intention               (6/6)
+10  PASS popup today/week/mascot/summary/pause/share      (19/19)
+11  PASS donation banner, rating, share, supporter        (26/26)
+12  PASS options                                          (13/13)
+13  PASS security                                         (23/23)
+14  PASS no links: milestone not consumed                 (3/3)
+15  PASS evil links                                       (3/3)
+TOTAL: 182 passed, 0 failed, 300 s

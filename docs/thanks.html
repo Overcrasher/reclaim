@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you – Reclaim</title>
+<style>
+:root{color-scheme:light dark;--bg:#F7F4EC;--surface:#FFFDF8;--line:#E3DDCC;--fg:#2F3A33;--muted:#5A675E;--accent:#4F7C5A;--accent-soft:#E2EEDF;--second:#B5603A;--second-soft:#F8E6DB;--btn-text:#fff;--shadow:0 1px 2px rgba(60,50,30,.06),0 8px 30px rgba(60,50,30,.09)}
+@media(prefers-color-scheme:dark){:root{--bg:#1A211C;--surface:#222B25;--line:#34423A;--fg:#EEF2EA;--muted:#A9B6AC;--accent:#7FB685;--accent-soft:#2A3B2F;--second:#E89A74;--second-soft:#3A2B24;--btn-text:#14201A;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 30px rgba(0,0,0,.3)}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-rounded,"SF Pro Rounded",-apple-system,"Segoe UI Variable","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mark{filter:drop-shadow(0 3px 6px rgba(79,124,90,.3))}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;font-size:17px}
+.card{background:radial-gradient(120% 100% at 50% 0%,var(--accent-soft),var(--surface) 65%);border:1px solid var(--line);max-width:460px;margin:16px;padding:36px 32px;border-radius:24px;text-align:center;box-shadow:var(--shadow)}
+.heart{font-size:44px;color:var(--accent);line-height:1;margin-top:14px}
+h1{margin:10px 0 12px;font-size:28px;letter-spacing:-.01em}p{color:var(--muted);margin:8px 0}
+.by{font-size:13px;margin-top:20px}
+</style>
+</head>
+<body>
+  <main class="card">
+    <svg class="mark" viewBox="0 0 32 32" width="56" height="56" aria-hidden="true"><defs><linearGradient id="mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60946C"/><stop offset="1" stop-color="#3C6246"/></linearGradient></defs><rect width="32" height="32" rx="7" fill="url(#mk)"/><rect x="7.6" y="25" width="16.8" height="2.9" rx="1.4" fill="#D9825B"/><path d="M16 25.5C14.6 20 14.6 16 16 12.6" fill="none" stroke="#F7F4EC" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="10.6" cy="14.4" rx="6" ry="3.4" transform="rotate(-30 10.6 14.4)" fill="#F7F4EC"/><ellipse cx="21.4" cy="11.8" rx="6.4" ry="3.5" transform="rotate(30 21.4 11.8)" fill="#A9DEB2"/></svg>
+    <div class="heart" aria-hidden="true">❤</div>
+    <h1>Thank you!</h1>
+    <p>Your support keeps Reclaim free, ad-free and tracking-free.</p>
+    <p>If the extension is installed, it will now show a small "Supporter ❤" badge in the popup and stop asking.</p>
+    <p>Go and enjoy the time you reclaimed.</p>
+    <p class="by">by Quantumbyte Labs</p>
+  </main>
+</body>
+</html>

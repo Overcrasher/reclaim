@@ -1,0 +1,33 @@
+== Group 11: donation banner, rating, share, supporter
+  PASS banner at 5 h reclaimed  | {'hidden': False, 'text': "You've reclaimed about 5 hours with Reclaim. Built by one developer, no ads, no tracking. If this helped, a coffee keeps it going — less than the cost of one hour of your time.", 'buttons': [['€3', 'donate'], ['€5', 'donate emphasized'], ['€10', 'donate'], ['Pick your own 
+  PASS banner copy has the user's real hours + 'one hour of your time'  | You've reclaimed about 5 hours with Reclaim. Built by one developer, no ads, no tracking. If this helped, a coffee keeps it going — less than the cost of one hour of your time.
+  PASS buttons €3 €5 €10 + Pick your own amount  | [['€3', 'donate'], ['€5', 'donate emphasized'], ['€10', 'donate'], ['Pick your own amount', 'donate custom']]
+  PASS only €5 emphasized; custom has class 'donate custom'
+  PASS no hint before clicking custom
+  PASS asked=[5], lastAskAt set  | {'asked': [5], 'dontAskAgain': False, 'lastAskAt': 1794415719836}
+  PASS 4 clicks open donate.stripe.com/test_a..d  | ['https://donate.stripe.com/test_a', 'https://donate.stripe.com/test_b', 'https://donate.stripe.com/test_c', 'https://donate.stripe.com/test_d', 'https://donate.stripe.com/test_c', 'https://donate.stripe.com/test_b', 'https://donate.stripe.com/test_d', 'https://donate.stripe.com/test_a']
+  PASS custom shows 'On the next page, choose the quantity (€1 each).'
+  PASS reopen: same milestone not asked again
+  PASS rating card not shown yet (1 leave)
+  PASS 20 h reached but < 30 days since last ask: no banner
+  PASS rating card appears after the 3rd Leave (banner not shown)
+  PASS rating stored {shown:true,at}
+  PASS Rate it opens the reviews URL  | ['https://chromewebstore.google.com/detail/hnmbgbahnihdjooaghhdbimpioicdikp/reviews', 'https://consent.google.com/m?continue=https://chromewebstore.google.com/detail/hnmbgbahnihdjooaghhdbimpioicdikp/reviews&gl=RO&m=0&pc=cws&cm=2&hl=en-US&src=1', 'https://consent.google.com/m?continue=https://chromew
+  PASS rating card never shown a second time
+  PASS after 30+ days: banner for 20 h milestone  | You've reclaimed about 20 hours with Reclaim. Built by one developer, no ads, no tracking. If this helped, a coffee keeps it going — less than the cost of one hour of your time.
+  PASS Don't ask again persists
+  PASS banner and rating never in the same render (banner wins)
+  PASS thanks page, bogus id -> supporter=False
+  PASS thanks page, cs_test_123 -> supporter=False
+  PASS thanks page, cs_live_ + 5 chars -> supporter=False
+  PASS thanks page, valid cs_test_ + 24 alnum -> supporter=True
+  PASS session_id on another page is ignored
+  PASS supporter: badge shown, no banner, no ask
+  PASS options: donate buttons + thanks line for supporter
+  PASS options: custom opens test_d + quantity hint
+   (55s)
+== error-level logs in phase 'links': 0
+
+================ RESULTS ================
+11  PASS donation banner, rating, share, supporter        (26/26)
+TOTAL: 26 passed, 0 failed, 58 s

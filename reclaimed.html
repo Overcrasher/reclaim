@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reclaim</title>
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="reclaimed.css">
+</head>
+<body>
+  <main class="center">
+    <div id="mascot" class="mascot"></div>
+    <h1 id="headline">Nice.</h1>
+    <p id="minutes" class="big">≈ 15 min reclaimed</p>
+    <p class="estimate">(estimate)</p>
+    <p id="today" class="today"></p>
+    <div class="actions">
+      <button id="share" class="primary" type="button">Share</button>
+      <button id="close" class="secondary" type="button">Close tab</button>
+    </div>
+  </main>
+  <script src="lib/sessions.js"></script>
+  <script src="lib/stats.js"></script>
+  <script src="lib/mascot.js"></script>
+  <script src="lib/growth.js"></script>
+  <script type="module" src="reclaimed.js"></script>
+</body>
+</html>

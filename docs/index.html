@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reclaim – A calm pause before you scroll</title>
+<meta name="description" content="Reclaim is a free Chrome extension that adds a calm pause before time-wasting sites. Set an intention, take a few seconds, and see the time you reclaimed. Private by design: no ads, no tracking, no accounts.">
+<link rel="canonical" href="https://overcrasher.github.io/reclaim/">
+<style>
+:root{color-scheme:light dark;--bg:#F7F4EC;--surface:#FFFDF8;--line:#E3DDCC;--fg:#2F3A33;--muted:#5A675E;--accent:#4F7C5A;--accent-soft:#E2EEDF;--second:#B5603A;--second-soft:#F8E6DB;--btn-text:#fff;--shadow:0 1px 2px rgba(60,50,30,.06),0 8px 30px rgba(60,50,30,.09)}
+@media(prefers-color-scheme:dark){:root{--bg:#1A211C;--surface:#222B25;--line:#34423A;--fg:#EEF2EA;--muted:#A9B6AC;--accent:#7FB685;--accent-soft:#2A3B2F;--second:#E89A74;--second-soft:#3A2B24;--btn-text:#14201A;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 30px rgba(0,0,0,.3)}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 ui-rounded,"SF Pro Rounded",-apple-system,"Segoe UI Variable","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mark{filter:drop-shadow(0 3px 6px rgba(79,124,90,.3))}
+main{max-width:720px;margin:0 auto;padding:40px 16px 24px}
+.hero{background:radial-gradient(120% 100% at 50% 0%,var(--accent-soft),var(--surface) 65%);border:1px solid var(--line);border-radius:24px;padding:40px 24px;text-align:center;box-shadow:var(--shadow)}
+h1{margin:12px 0 4px;font-size:40px;line-height:1.15;letter-spacing:-.02em}
+.tag{margin:0 0 16px;font-size:20px;color:var(--accent);font-weight:600}
+.hero p{max-width:540px;margin:8px auto;color:var(--muted)}
+.cta{margin:24px 0 0}
+.soon{display:inline-block;background:var(--second-soft);color:var(--second);font-weight:700;padding:10px 22px;border-radius:999px;font-size:16px}
+.btn{display:inline-block;background:var(--accent);color:var(--btn-text);font-weight:700;font-size:18px;line-height:1.3;text-decoration:none;padding:14px 28px;border-radius:999px;box-shadow:var(--shadow)}
+.btn:hover{filter:brightness(1.08)}
+.free{margin:8px 0 0;font-size:14px}
+.dev{font-size:14px}
+@media(max-width:480px){h1{font-size:32px}.hero{padding:32px 16px}}
+h2{margin:40px 0 12px;font-size:24px;letter-spacing:-.01em}
+p,li{color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow)}
+.steps strong{display:block;color:var(--fg)}
+.steps li:nth-child(odd){border-left:4px solid var(--accent)}.steps li:nth-child(even){border-left:4px solid var(--second)}
+footer{max-width:720px;margin:0 auto;padding:16px 16px 48px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);text-align:center}
+footer a{margin:0 8px;display:inline-block}
+footer p{margin:12px 0 0;font-size:13px}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <svg class="mark" viewBox="0 0 32 32" width="72" height="72" aria-hidden="true"><defs><linearGradient id="mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60946C"/><stop offset="1" stop-color="#3C6246"/></linearGradient></defs><rect width="32" height="32" rx="7" fill="url(#mk)"/><rect x="7.6" y="25" width="16.8" height="2.9" rx="1.4" fill="#D9825B"/><path d="M16 25.5C14.6 20 14.6 16 16 12.6" fill="none" stroke="#F7F4EC" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="10.6" cy="14.4" rx="6" ry="3.4" transform="rotate(-30 10.6 14.4)" fill="#F7F4EC"/><ellipse cx="21.4" cy="11.8" rx="6.4" ry="3.5" transform="rotate(30 21.4 11.8)" fill="#A9DEB2"/></svg>
+    <h1>Reclaim</h1>
+    <p class="tag">A calm pause before you scroll</p>
+    <p>Reclaim is a free Chrome extension that adds a calm pause before the sites that swallow your time. Open a popular social or video site and a quiet screen asks what you are here for. Take a few seconds, then decide: go in for a set time, or leave.</p>
+    <!-- TODO(store-url): when the Chrome Web Store item is published, delete the "coming soon" line below and
+         uncomment this button, replacing STORE_URL with the real item URL (https://chromewebstore.google.com/detail/reclaim/<extension-id>).
+    <p class="cta"><a class="btn" href="STORE_URL" target="_blank" rel="noopener">Add to Chrome — it's free</a></p>
+    -->
+    <p class="cta"><span class="soon">Coming soon to the Chrome Web Store</span></p>
+    <p class="free small">Free, no ads, no accounts. Works in Chrome.</p>
+  </header>
+
+  <section>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><strong>A calm pause</strong>A full-screen pause appears before the page is usable, with a short countdown. Playing media is paused until you choose. Write what you are here for if you like.</li>
+      <li><strong>Go in for a set time, or leave</strong>&quot;Go in&quot; starts a timed session (10 minutes by default). When it ends, a soft reminder offers a few more minutes or a way out. &quot;Leave&quot; takes you to a small page that says how much time you reclaimed.</li>
+      <li><strong>Watch your plant grow</strong>The popup shows today&#x27;s time, a 7-day chart and a weekly summary, with a little plant that grows as your weeks go well. No guilt text, just visuals.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Your sites, your rules</h2>
+    <p>Reclaim comes with a set of popular social and video sites, and you can add or remove sites in its settings. For a site you add, Chrome asks your permission first. &quot;Time reclaimed&quot; is an estimate, and it is labelled that way everywhere. Reclaim is an independent project and is not affiliated with any site.</p>
+  </section>
+
+  <section>
+    <h2>Private by design</h2>
+    <p>Everything stays on your device. The things you type as intentions are deleted automatically after 7 days. There are no ads, no tracking and no accounts, and the extension makes no network requests. It is open source, so you can check for yourself. Read the full <a href="privacy.html">privacy policy</a>.</p>
+  </section>
+
+  <section>
+    <h2>Install</h2>
+    <p>Reclaim will be available from the Chrome Web Store. Developers can already <a href="https://github.com/Overcrasher/reclaim" rel="noopener">load the source unpacked</a> from GitHub.</p>
+  </section>
+
+  <section>
+    <h2>Support</h2>
+    <p>Reclaim is free. If it helps you, you can optionally make a one-time contribution through Stripe. The option appears only at milestones of reclaimed hours, and you can turn it off at any time.</p>
+  </section>
+</main>
+<footer>
+  <a href="privacy.html">Privacy policy</a>
+  <a href="https://github.com/Overcrasher/reclaim">Source code</a>
+  <a href="https://github.com/Overcrasher/reclaim/issues">Issues</a>
+  <p>More from the same developer:
+    <a href="https://chromewebstore.google.com/detail/wait-24h/pkgdjohoemjkejcbfbkfobbbjcpdabme" target="_blank" rel="noopener">Wait 24h — a pause before impulse buys</a>
+    <a href="https://chromewebstore.google.com/detail/meeting-meter/ffkniocclnaojfdcoofnjkfnihnpgnlb" target="_blank" rel="noopener">Meeting Meter — see what your meetings cost</a></p>
+  <p>by Quantumbyte Labs — Software built for humans. Sustainable and secure.</p>
+</footer>
+</body>
+</html>

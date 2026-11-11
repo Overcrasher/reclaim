@@ -1,0 +1,13 @@
+# Reclaim build progress (running log)
+- DONE: all extension code, locales (exact from store/listing.md), tools, jsc tests (282 pass), harness (plumbing.py + harness.py, 15 groups).
+- E2E passed so far: groups 1-5 (run: ONLY=1,2 python3 tests/e2e/harness.py). Run long groups in background with output to tests/e2e/run-*.log (6 takes ~90 s).
+- NEXT: groups 6-15, README.md, live verification (tests/e2e/live.py), check_release, package.
+- groups 6,7 pass; README.md written. running 8-15 next (logs run-*.log)
+- groups 8,10,12,13 pass; fixing 9 (SW stop); then 11,14,15 (links variants)
+- group 9 passes. running 11,14,15 (run-11.log)
+- 11,14,15 pass (11 had a test bug, fixed, re-run 11 once). NEXT: tests/e2e/live.py (live sites), check_release, package
+- live.py done: tiktok/reddit/instagram/facebook OK, x.com net error, yt shorts direct -> consent redirect. running live_yt.py
+- live YT: EU consent wall intercepts Shorts navigation (consent not clicked on purpose). NEXT: check_release, package, final report
+- followups: (1) scrollLock added to content.js; need live verify IG/FB + scroll after Go in; (2) YT consent cookie live; (3) X.com retries
+- (1) scroll fix verified live IG/FB. running yt, x
+- ALL followups done: scroll fix verified IG/FB; YT direct+SPA verified live (consent rejected in test profile); X loads headed and headless+UA, overlay + Go in OK. Remaining: final jsc/package re-run + report.

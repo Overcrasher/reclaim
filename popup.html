@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reclaim</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <img class="mark" src="icons/icon48.png" width="28" height="28" alt="">
+    <h1>Reclaim</h1>
+    <span id="supporter" class="badge" hidden>Supporter ❤</span>
+  </header>
+
+  <section id="banner" class="banner" hidden>
+    <button id="banner-close" class="x" type="button" aria-label="Not now">×</button>
+    <p id="banner-text"></p>
+    <div id="banner-buttons" class="donate-row"></div>
+    <p id="banner-note" class="note"></p>
+    <div class="banner-foot">
+      <button id="banner-dismiss" class="small-link" type="button">Not now</button>
+      <button id="banner-never" class="small-link" type="button">Don't ask again</button>
+    </div>
+  </section>
+
+  <section id="rating" class="rating" hidden aria-labelledby="rating-text">
+    <p id="rating-text">Enjoying Reclaim? A quick rating helps other people find it.</p>
+    <div class="rating-row">
+      <button id="rating-go" class="rate-btn" type="button">Rate it ★</button>
+      <button id="rating-no" class="small-link" type="button">No thanks</button>
+    </div>
+  </section>
+
+  <section id="weekly" class="weekly" hidden aria-label="Weekly summary">
+    <p id="weekly-text"></p>
+  </section>
+
+  <section class="hero" aria-labelledby="todayLabel">
+    <div id="mascot" class="mascot"></div>
+    <div class="hero-text">
+      <div id="todayLabel" class="label">Today</div>
+      <div id="reclaimed" class="big">≈ 0m</div>
+      <div class="sub">reclaimed (estimate)</div>
+      <div id="spent" class="spent">0m spent on these sites</div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="weekLabel">
+    <h2 id="weekLabel">This week</h2>
+    <div id="chart" class="chart"></div>
+    <div class="legend" aria-hidden="true">
+      <span><i class="sw spent-sw"></i>Spent</span>
+      <span><i class="sw rec-sw"></i>Reclaimed (estimate)</span>
+    </div>
+    <p id="weekTotals" class="meta"></p>
+  </section>
+
+  <div class="row">
+    <button id="pause" class="pill" type="button">Pause Reclaim for 1 hour</button>
+    <button id="share" class="pill" type="button" hidden>Share</button>
+  </div>
+  <p id="pauseNote" class="meta" hidden></p>
+
+  <div class="foot"><button id="optionsLink" class="link" type="button">Settings</button></div>
+
+  <script src="lib/sessions.js"></script>
+  <script src="lib/stats.js"></script>
+  <script src="lib/mascot.js"></script>
+  <script src="lib/donation.js"></script>
+  <script src="lib/growth.js"></script>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

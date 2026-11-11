@@ -1,0 +1,91 @@
+== Group 9: intention purge + forged intention
+  PASS daily 'purge' alarm deletes intentions older than 7 days (simulated by back-dated records)  | ['edge6', 'new']
+  FAIL purge alarm is scheduled daily
+  FAIL group crashed  | RuntimeError: no service worker target
+Traceback (most recent call last):
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 599, in run_phase
+    try: f()
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 337, in g9
+    got = [i["text"] for i in storage().get("intentions", [])]
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/plumbing.py", line 151, in storage
+    def storage(): return sw_eval("chrome.storage.local.get(null)")
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/plumbing.py", line 146, in sw_eval
+    try: return ev(get_sw(), expr)
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/plumbing.py", line 136, in get_sw
+    raise RuntimeError("no service worker target")
+RuntimeError: no service worker target
+   (25s)
+== Group 10: popup today/week/mascot/summary/pause/share
+  FAIL group crashed  | RuntimeError: no service worker target
+Traceback (most recent call last):
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 599, in run_phase
+    try: f()
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 359, in g10
+    reset(extra={"days": days, "totals": {"reclaimedMin": 200, "leaves": 2, "goIns": 4, "spentSec": 3600}})
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 37, in reset
+    sw_eval("chrome.storage.local.clear().then(()=>chrome.storage.session.clear())")
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/plumbing.py", line 146, in sw_eval
+    try: return ev(get_sw(), expr)
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/plumbing.py", line 136, in get_sw
+    raise RuntimeError("no service worker target")
+RuntimeError: no service worker target
+   (17s)
+== Group 12: options
+  FAIL group crashed  | RuntimeError: no service worker target
+Traceback (most recent call last):
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 599, in run_phase
+    try: f()
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 496, in g12
+    reset()
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 37, in reset
+    sw_eval("chrome.storage.local.clear().then(()=>chrome.storage.session.clear())")
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/plumbing.py", line 146, in sw_eval
+    try: return ev(get_sw(), expr)
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/plumbing.py", line 136, in get_sw
+    raise RuntimeError("no service worker target")
+RuntimeError: no service worker target
+   (15s)
+== Group 13: security
+  FAIL group crashed  | RuntimeError: no service worker target
+Traceback (most recent call last):
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 599, in run_phase
+    try: f()
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 535, in g13
+    reset()
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/harness.py", line 37, in reset
+    sw_eval("chrome.storage.local.clear().then(()=>chrome.storage.session.clear())")
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/plumbing.py", line 146, in sw_eval
+    try: return ev(get_sw(), expr)
+  File "/Users/radumantale/Documents/PersonalWorkspace/Catchy-ideas/reclaim/tests/e2e/plumbing.py", line 136, in get_sw
+    raise RuntimeError("no service worker target")
+RuntimeError: no service worker target
+   (16s)
+== error-level logs in phase 'main': 0
+== Group 8: user-added site (dynamic registration)
+  PASS invalid input rejected with a message
+  PASS site stored as {host:fixture-custom.test, pathPrefix:/news}  | [{'host': 'youtube.com', 'pathPrefix': '/shorts'}, {'host': 'tiktok.com'}, {'host': 'reddit.com'}, {'host': 'x.com'}, {'host': 'twitter.com'}, {'host': 'instagram.com'}, {'host': 'facebook.com'}, {'host': 'fixture-custom.test', 'pathPrefix': '/news'}]
+  PASS dynamic content script registered (document_start, persistAcrossSessions)  | [{'id': 'site-fixture-custom-test-news', 'matches': ['https://*.fixture-custom.test/*', 'https://fixture-custom.test/*'], 'runAt': 'document_start', 'persist': True, 'js': ['lib/mascot.js', 'content.js']}]
+  PASS options list shows the site tagged 'added by you'
+  PASS duplicate rejected
+  PASS overlay appears on the user-added site (dynamic script)
+  PASS path outside the prefix: no overlay
+  PASS remove: rule deleted and dynamic script unregistered
+  PASS after removal: no overlay
+  PASS removing a default site (reddit.com) works
+  PASS removed default site: no overlay
+  PASS Restore default sites brings it back
+   (20s)
+== error-level logs in phase 'custom': 0
+
+================ RESULTS ================
+ 8  PASS user-added site (dynamic registration)           (12/12)
+ 9  FAIL intention purge + forged intention               (1/3)
+      FAIL: purge alarm is scheduled daily | 
+      FAIL: group crashed | RuntimeError: no service worker target
+10  FAIL popup today/week/mascot/summary/pause/share      (0/1)
+      FAIL: group crashed | RuntimeError: no service worker target
+12  FAIL options                                          (0/1)
+      FAIL: group crashed | RuntimeError: no service worker target
+13  FAIL security                                         (0/1)
+      FAIL: group crashed | RuntimeError: no service worker target
+TOTAL: 13 passed, 5 failed, 99 s
