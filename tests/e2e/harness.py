@@ -481,6 +481,24 @@ def g11_nolinks():
     try: check("options: 'Donation links not configured yet' and no buttons", px(sid, "document.querySelectorAll('#donate button').length") == 0 and "not configured" in px(sid, "document.getElementById('donate-note').textContent"))
     finally: close_tab(tid)
 
+def g16():  # REAL build config (single EUR 3 link): banner + options show exactly one button
+    reset(extra={"totals": {"reclaimedMin": 5 * 60 + 10, "leaves": 1, "goIns": 1, "spentSec": 0}})
+    tid, sid = popup_tab(); time.sleep(1.5)
+    try:
+        b = banner(sid)
+        check("real build: banner shows at 5 h", b["hidden"] is False, b)
+        check("real build: exactly one button '€3', no custom hint", [x[0] for x in b["buttons"]] == ["€3"] and b["note"] == "", b)
+        shot(sid, "popup_banner_single_link")
+        TABS_SEEN.clear(); px(sid, "document.querySelector('#banner-buttons button').click()"); time.sleep(1.5)
+        check("real build: click opens the real donate.stripe.com/dRmaEY8NVaio5ZwacSfbq09", any(u == "https://donate.stripe.com/dRmaEY8NVaio5ZwacSfbq09" for u in TABS_SEEN), TABS_SEEN)
+        for t_ in open_tabs_with("stripe.com"): close_tab(t_["targetId"])
+    finally: close_tab(tid)
+    tid, sid = options_tab(); time.sleep(1.2)
+    try:
+        check("real build options: one button €3, no custom/monthly", px(sid, "[...document.querySelectorAll('#donate button')].map(b=>b.textContent).join('|')") == "€3" and px(sid, "document.getElementById('donate-note').textContent") == "", px(sid, "document.getElementById('donate-note').textContent"))
+        shot(sid, "options_single_link")
+    finally: close_tab(tid)
+
 def g11_evil():
     n0 = len(LOGS); reset(extra={"totals": {"reclaimedMin": 600, "leaves": 1, "goIns": 1, "spentSec": 0}}); tid, sid = popup_tab(); time.sleep(1.5)
     try:
@@ -574,7 +592,7 @@ GROUPS = [(1, "load/manifest/i18n/welcome", "main", g1), (2, "overlay+countdown+
  (4, "expiry overlay + Stay", "main", g4), (5, "Leave -> reclaimed + counters", "main", g5), (6, "active-time heartbeats", "main", g6),
  (7, "SPA navigation (youtube-like)", "main", g7), (8, "user-added site (dynamic registration)", "custom", g8), (9, "intention purge + forged intention", "main", g9),
  (10, "popup today/week/mascot/summary/pause/share", "main", g10), (11, "donation banner, rating, share, supporter", "links", g11),
- (12, "options", "main", g12), (13, "security", "main", g13), (14, "no links: milestone not consumed", "main", g11_nolinks), (15, "evil links", "evil", g11_evil)]
+ (12, "options", "main", g12), (13, "security", "main", g13), (14, "no links: milestone not consumed", "nolinks", g11_nolinks), (15, "evil links", "evil", g11_evil), (16, "real build: single EUR 3 link", "main", g16)]
 NAMES = {n: nm for n, nm, p, f in GROUPS}
 
 def variant(name, links=None, extra_host=None):
@@ -609,6 +627,7 @@ def main():
     run_phase("main", EXT)
     run_phase("custom", variant("custom", extra_host="https://*.fixture-custom.test/*") if any(p == "custom" and (not ONLY or n in ONLY) for n, _, p, _ in GROUPS) else EXT)
     run_phase("links", variant("links", '{ small: "https://donate.stripe.com/test_a", medium: "https://donate.stripe.com/test_b", large: "https://donate.stripe.com/test_c", custom: "https://donate.stripe.com/test_d", monthly: "" }') if any(p == "links" and (not ONLY or n in ONLY) for n, _, p, _ in GROUPS) else EXT)
+    run_phase("nolinks", variant("nolinks", '{ small: "", medium: "", large: "", custom: "", monthly: "" }') if any(p == "nolinks" and (not ONLY or n in ONLY) for n, _, p, _ in GROUPS) else EXT)
     run_phase("evil", variant("evil", '{ small: "https://evil.example/x", medium: "https://buy.stripe.com.evil.example/x", large: "http://donate.stripe.com/x", custom: "https://evil.example/custom", monthly: "" }') if any(p == "evil" and (not ONLY or n in ONLY) for n, _, p, _ in GROUPS) else EXT)
     print("\n================ RESULTS ================")
     tp = tf = 0

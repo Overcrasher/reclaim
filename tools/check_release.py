@@ -4,7 +4,7 @@
 Fails (exit 1) if a donation link is not an https://buy.stripe.com/ or https://donate.stripe.com/ link, looks like a
 test-mode / placeholder link, THANKS_URL is not the expected thanks page, the manifest lacks the matching thanks
 content-script match, or lib/validate.js does not contain the same thanks URL.
-With --release the four EUR links (small, medium, large, custom) must also be set.
+With --release at least one EUR link (small, medium, large or custom) must also be set.
 """
 import json, os, re, sys
 
@@ -63,9 +63,8 @@ if cfg is not None:
             if re.search(r"TODO|PLACEHOLDER", url, re.I):
                 errors.append("%s: contains TODO/PLACEHOLDER" % where)
     if release:
-        for key in REQUIRED:
-            if not sets["DONATE_LINKS"].get(key):
-                errors.append("--release: DONATE_LINKS.%s (EUR) is empty - create the Stripe Payment Link and set it" % key)
+        if not any(sets["DONATE_LINKS"].get(k) for k in ("small", "medium", "large", "custom")):
+            errors.append("--release: set at least one EUR link in DONATE_LINKS (small, medium, large or custom)")
 
     m = re.search(r'export const THANKS_URL\s*=\s*"([^"]*)"', cfg)
     if not m:

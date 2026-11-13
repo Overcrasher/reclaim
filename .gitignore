@@ -4,3 +4,5 @@ __pycache__/
 dist/
 tests/e2e/shots/
 tests/e2e/profile*/
+tools/store_raw/
+tests/e2e/*.err
