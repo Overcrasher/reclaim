@@ -43,13 +43,13 @@ PRIVACY
 • Four permissions: storage, tabs, alarms and scripting. Access only to the sites on your list.
 
 OPTIONAL SUPPORT
-Reclaim is free and built by one developer. If it helps, you can support it with a one-time payment (€3, €5, €10 or an amount you pick) through Stripe. The ask appears in the popup only at milestones (5, 20, 50 and 100 hours reclaimed), at most once per milestone and 30 days apart, never right after install. Choose "Don't ask again" and it stops for good. The same links are always in Options. Payments happen on Stripe's page; the extension never sees them.
+Reclaim is free and built by one developer. If it helps, you can support it with an optional one-time donation through Stripe. The ask appears in the popup only at milestones (5, 20, 50 and 100 hours reclaimed), at most once per milestone and 30 days apart, never right after install. Choose "Don't ask again" and it stops for good. The same links are always in Options. Payments happen on Stripe's page; the extension never sees them.
 
 The extension's interface is in English.
 
 Open source: https://github.com/Overcrasher/reclaim
 ```
-Characters: 2300
+Characters: 2275
 
 ---
 
@@ -78,13 +78,13 @@ CONFIDENȚIALITATE
 • Patru permisiuni: storage, tabs, alarms și scripting. Acces doar la site-urile din lista ta.
 
 SUSȚINERE OPȚIONALĂ
-Reclaim este gratuită și făcută de un singur dezvoltator. Dacă ți-a fost de folos, o poți susține printr-o plată unică (3 €, 5 €, 10 € sau o sumă aleasă de tine), prin Stripe. Propunerea apare în fereastra extensiei doar la praguri (5, 20, 50 și 100 de ore recuperate), cel mult o dată pe prag, la minimum 30 de zile distanță, niciodată imediat după instalare. Cu „Don't ask again” se oprește definitiv. Aceleași linkuri sunt mereu în Opțiuni. Plata se face pe pagina Stripe; extensia nu o vede.
+Reclaim este gratuită și făcută de un singur dezvoltator. Dacă ți-a fost de folos, o poți susține printr-o donație unică, opțională, prin Stripe. Propunerea apare în fereastra extensiei doar la praguri (5, 20, 50 și 100 de ore recuperate), cel mult o dată pe prag, la minimum 30 de zile distanță, niciodată imediat după instalare. Cu „Don't ask again” se oprește definitiv. Aceleași linkuri sunt mereu în Opțiuni. Plata se face pe pagina Stripe; extensia nu o vede.
 
 Interfața extensiei este în limba engleză.
 
 Cod sursă deschis: https://github.com/Overcrasher/reclaim
 ```
-Characters: 2580
+Characters: 2550
 
 ### Detailed description (de, German)
 
@@ -109,13 +109,13 @@ DATENSCHUTZ
 • Vier Berechtigungen: storage, tabs, alarms und scripting. Zugriff nur auf die Seiten deiner Liste.
 
 FREIWILLIGE UNTERSTÜTZUNG
-Reclaim ist kostenlos und von einem einzelnen Entwickler gebaut. Wenn sie dir hilft, kannst du sie mit einer einmaligen Zahlung unterstützen (3 €, 5 €, 10 € oder ein Betrag deiner Wahl) über Stripe. Die Bitte erscheint im Popup nur bei Meilensteinen (5, 20, 50 und 100 zurückgewonnene Stunden), höchstens einmal pro Meilenstein und mit mindestens 30 Tagen Abstand, nie direkt nach der Installation. Wähle „Don't ask again“, und sie hört für immer auf. Dieselben Links findest du immer in den Optionen. Die Zahlung läuft auf der Seite von Stripe; die Erweiterung sieht sie nie.
+Reclaim ist kostenlos und von einem einzelnen Entwickler gebaut. Wenn sie dir hilft, kannst du sie mit einer freiwilligen einmaligen Spende über Stripe unterstützen. Die Bitte erscheint im Popup nur bei Meilensteinen (5, 20, 50 und 100 zurückgewonnene Stunden), höchstens einmal pro Meilenstein und mit mindestens 30 Tagen Abstand, nie direkt nach der Installation. Wähle „Don't ask again“, und sie hört für immer auf. Dieselben Links findest du immer in den Optionen. Die Zahlung läuft auf der Seite von Stripe; die Erweiterung sieht sie nie.
 
 Die Oberfläche der Erweiterung ist auf Englisch.
 
 Open Source: https://github.com/Overcrasher/reclaim
 ```
-Characters: 2726
+Characters: 2693
 
 ### Detailed description (fr, French)
 
@@ -140,13 +140,13 @@ CONFIDENTIALITÉ
 • Quatre autorisations : storage, tabs, alarms et scripting. Accès uniquement aux sites de votre liste.
 
 SOUTIEN FACULTATIF
-Reclaim est gratuite et conçue par un seul développeur. Si elle vous est utile, vous pouvez la soutenir par un paiement unique (3 €, 5 €, 10 € ou un montant de votre choix) via Stripe. La demande n'apparaît dans la fenêtre de l'extension qu'à certains paliers (5, 20, 50 et 100 heures regagnées), au plus une fois par palier et à 30 jours d'intervalle, jamais juste après l'installation. Choisissez « Don't ask again » et elle s'arrête définitivement. Les mêmes liens sont toujours dans les Options. Le paiement se fait sur la page de Stripe ; l'extension ne le voit jamais.
+Reclaim est gratuite et conçue par un seul développeur. Si elle vous est utile, vous pouvez la soutenir par un don unique et facultatif via Stripe. La demande n'apparaît dans la fenêtre de l'extension qu'à certains paliers (5, 20, 50 et 100 heures regagnées), au plus une fois par palier et à 30 jours d'intervalle, jamais juste après l'installation. Choisissez « Don't ask again » et elle s'arrête définitivement. Les mêmes liens sont toujours dans les Options. Le paiement se fait sur la page de Stripe ; l'extension ne le voit jamais.
 
 L'interface de l'extension est en anglais.
 
 Code source ouvert: https://github.com/Overcrasher/reclaim
 ```
-Characters: 2771
+Characters: 2734
 
 ### Detailed description (es, Spanish)
 
@@ -171,13 +171,13 @@ PRIVACIDAD
 • Cuatro permisos: storage, tabs, alarms y scripting. Acceso solo a los sitios de tu lista.
 
 APOYO OPCIONAL
-Reclaim es gratuita y la ha creado un solo desarrollador. Si te resulta útil, puedes apoyarla con un pago único (3 €, 5 €, 10 € o un importe a tu elección) a través de Stripe. La petición aparece en la ventana de la extensión solo en ciertos hitos (5, 20, 50 y 100 horas recuperadas), como máximo una vez por hito y con 30 días de separación, nunca justo después de instalar. Elige «Don't ask again» y se detiene para siempre. Los mismos enlaces están siempre en Opciones. El pago se hace en la página de Stripe; la extensión nunca lo ve.
+Reclaim es gratuita y la ha creado un solo desarrollador. Si te resulta útil, puedes apoyarla con una donación única y opcional a través de Stripe. La petición aparece en la ventana de la extensión solo en ciertos hitos (5, 20, 50 y 100 horas recuperadas), como máximo una vez por hito y con 30 días de separación, nunca justo después de instalar. Elige «Don't ask again» y se detiene para siempre. Los mismos enlaces están siempre en Opciones. El pago se hace en la página de Stripe; la extensión nunca lo ve.
 
 La interfaz de la extensión está en inglés.
 
 Código abierto: https://github.com/Overcrasher/reclaim
 ```
-Characters: 2591
+Characters: 2563
 
 ---
 
@@ -278,7 +278,7 @@ Quick test (about 2 minutes):
 7. https://www.youtube.com/shorts/ shows the pause only on Shorts pages (the rule is path-scoped; the script watches URL changes because YouTube navigates without reloading).
 8. Options > Sites: adding a site triggers Chrome's own permission prompt for that host only (optional_host_permissions); removing it removes the permission.
 
-Optional support: the extension is free. A support banner appears in the popup only at 5, 20, 50 and 100 hours reclaimed, at most once per milestone, 30 days apart, never after "Don't ask again". The same Stripe links are always in Options under "Support this project". Payments happen on Stripe's page (donate.stripe.com or buy.stripe.com); the extension never handles payment data.
+Optional support: the extension is free. A support banner appears in the popup only at 5, 20, 50 and 100 hours reclaimed, at most once per milestone, 30 days apart, never after "Don't ask again". The same Stripe link is always in Options under "Support this project". Payments happen on Stripe's page (donate.stripe.com or buy.stripe.com); the extension never handles payment data.
 
 Permissions: storage, tabs, alarms, scripting, host permissions for the default sites, and optional https://*/* only for sites the user adds. No remote code, no network requests by the extension. Source: https://github.com/Overcrasher/reclaim
 ```
